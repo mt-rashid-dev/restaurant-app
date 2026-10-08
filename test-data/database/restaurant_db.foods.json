@@ -1,0 +1,380 @@
+[{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc27d"
+  },
+  "img": "",
+  "foodName": "Pepperoni Pizza",
+  "price": 14.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc27e"
+  },
+  "img": "",
+  "foodName": "Margherita Pizza",
+  "price": 11.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc27f"
+  },
+  "img": "",
+  "foodName": "BBQ Chicken Pizza",
+  "price": 15.49,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc280"
+  },
+  "img": "",
+  "foodName": "Veggie Pizza",
+  "price": 12.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc281"
+  },
+  "img": "",
+  "foodName": "Beef Burger",
+  "price": 8.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc282"
+  },
+  "img": "",
+  "foodName": "Cheese Burger",
+  "price": 7.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc283"
+  },
+  "img": "",
+  "foodName": "Chicken Burger",
+  "price": 6.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc284"
+  },
+  "img": "",
+  "foodName": "Veggie Burger",
+  "price": 5.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc285"
+  },
+  "img": "",
+  "foodName": "Chicken Biryani",
+  "price": 12.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc286"
+  },
+  "img": "",
+  "foodName": "Kacci Biryani",
+  "price": 14.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc287"
+  },
+  "img": "",
+  "foodName": "Chicken Curry",
+  "price": 10.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc288"
+  },
+  "img": "",
+  "foodName": "Beef Curry",
+  "price": 12.49,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc289"
+  },
+  "img": "",
+  "foodName": "Chicken Roast",
+  "price": 9.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc28a"
+  },
+  "img": "",
+  "foodName": "Beef Bhuna",
+  "price": 13.49,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc28b"
+  },
+  "img": "",
+  "foodName": "Tandoori Roti",
+  "price": 1.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc28c"
+  },
+  "img": "",
+  "foodName": "Cooked Rice",
+  "price": 2.49,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc28d"
+  },
+  "img": "",
+  "foodName": "Chicken Fried Rice",
+  "price": 8.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc28e"
+  },
+  "img": "",
+  "foodName": "Chicken Noodles",
+  "price": 8.49,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc28f"
+  },
+  "img": "",
+  "foodName": "Vegetable Noodles",
+  "price": 6.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc290"
+  },
+  "img": "",
+  "foodName": "Chicken Sharma",
+  "price": 6.49,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc291"
+  },
+  "img": "",
+  "foodName": "Beef Sharma",
+  "price": 7.49,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc292"
+  },
+  "img": "",
+  "foodName": "Chicken Korma",
+  "price": 11.49,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc293"
+  },
+  "img": "",
+  "foodName": "Egg Korma",
+  "price": 6.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc294"
+  },
+  "img": "",
+  "foodName": "Grilled Chicken",
+  "price": 11.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc295"
+  },
+  "img": "",
+  "foodName": "Grilled Lobster",
+  "price": 24.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc296"
+  },
+  "img": "",
+  "foodName": "Pomfret Kabab",
+  "price": 16.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc297"
+  },
+  "img": "",
+  "foodName": "Rohu Fish Korma",
+  "price": 10.49,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc298"
+  },
+  "img": "",
+  "foodName": "Katla Fish Korma",
+  "price": 10.49,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc299"
+  },
+  "img": "",
+  "foodName": "Rohu Fish Bhuna",
+  "price": 9.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc29a"
+  },
+  "img": "",
+  "foodName": "Katla Fish Bhuna",
+  "price": 9.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc29b"
+  },
+  "img": "",
+  "foodName": "Tilapia Fish Curry",
+  "price": 8.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc29c"
+  },
+  "img": "",
+  "foodName": "Pangas Fish Curry",
+  "price": 7.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc29d"
+  },
+  "img": "",
+  "foodName": "Shrimp Curry",
+  "price": 13.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc29e"
+  },
+  "img": "",
+  "foodName": "Mashed Potato",
+  "price": 3.49,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc29f"
+  },
+  "img": "",
+  "foodName": "Mashed Eggplant",
+  "price": 3.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc2a0"
+  },
+  "img": "",
+  "foodName": "Red Spinach Curry",
+  "price": 4.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc2a1"
+  },
+  "img": "",
+  "foodName": "Taro Spinach Curry",
+  "price": 4.99,
+  "discount": 0,
+  "stock": 20
+},
+{
+  "_id": {
+    "$oid": "6ac7221ab6ef98139c9cc2a2"
+  },
+  "img": "",
+  "foodName": "Lentil Soup",
+  "price": 3.99,
+  "discount": 0,
+  "stock": 20
+}]
