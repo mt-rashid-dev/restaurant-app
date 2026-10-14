@@ -47,7 +47,7 @@ const Home = () => {
       </div>
 
       {/* Why choose us - section */}
-      <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 px-4 mt-3"}>
+      <div className={"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-4 mt-3"}>
         <p className={"flex bg-base-200 rounded-md"}>
           <span className={"w-[50px] h-[50px] flex justify-center items-center bg-accent rounded-md text-white text-2xl"}>
             <IoGiftOutline/>

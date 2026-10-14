@@ -1,21 +1,21 @@
 const Footer = () => {
   return (
     <footer className="footer sm:footer-horizontal bg-base-300 text-base-content p-10 mt-10">
-      <nav>
+      <nav className={"m-auto"}>
         <h6 className="footer-title">Discover</h6>
         <a className="link link-hover">About us</a>
         <a className="link link-hover">Contact</a>
         <a className="link link-hover">Blog</a>
         <a className="link link-hover">FAQ</a>
       </nav>
-      <nav>
+      <nav className={"m-auto"}>
         <h6 className="footer-title">Explore</h6>
         <a className="link link-hover">Features</a>
         <a className="link link-hover">Enterprise</a>
         <a className="link link-hover">Design</a>
         <a className="link link-hover">Marketing</a>
       </nav>
-      <nav>
+      <nav className={"m-auto"}>
         <h6 className="footer-title">Social</h6>
         <div className="grid grid-flow-col gap-4">
           <a>
