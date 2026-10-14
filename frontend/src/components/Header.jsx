@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { BsCart4, BsSun, BsMoon } from "react-icons/bs";
+import { BsCart4, BsSun, BsMoon, BsXLg } from "react-icons/bs";
 
 import { toggleTheme } from "../utils.js";
 import { setTheme } from "../features/theme/themeSlice.js";
+import MiniCart from "./MiniCart.jsx";
 
 const Header = () => {
   const theme = useSelector(state => state.theme.value);
+  const length = useSelector(state => state.cart.length);
+  const total = useSelector(state => state.cart.total);
   const dispatch = useDispatch();
 
   const changeTheme = () => {
@@ -59,7 +62,7 @@ const Header = () => {
             {/* Cart Button acts as a label to toggle the drawer */}
             <label htmlFor="cart-drawer" className="btn btn-ghost relative cursor-pointer">
               <BsCart4 className="text-lg" />
-              <span className="absolute -top-1 -right-1 bg-orange-300 px-1 rounded-full text-black text-xs">0</span>
+              <span className="absolute top-0 right-0 bg-orange-300 px-1 rounded-full text-black text-xs">{length}</span>
             </label>
 
             <button
@@ -81,14 +84,15 @@ const Header = () => {
           <div>
             <div className="flex items-center justify-between pb-4 border-b border-base-300">
               <h2 className="text-lg font-bold">Your Cart</h2>
-              <label htmlFor="cart-drawer" className="btn btn-sm btn-circle btn-ghost">✕</label>
+              <label htmlFor="cart-drawer" className="cursor-pointer"><BsXLg/></label>
             </div>
-            <ul className="py-4 space-y-2">
-              <li><a>Cart Item 1</a></li>
-              <li><a>Cart Item 2</a></li>
-            </ul>
+            <MiniCart/>
           </div>
           <div>
+            <div className={"flex justify-between mb-2"}>
+              <h3 className={"text-lg"}>Total</h3>
+              <h3 className={"text-lg"}>${total.toFixed(2)}</h3>
+            </div>
             <button className="btn btn-primary w-full">Checkout</button>
           </div>
         </div>
