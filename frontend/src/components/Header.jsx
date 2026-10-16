@@ -72,7 +72,7 @@ const Header = () => {
               {theme === "light"? <BsMoon/> : <BsSun/>}
             </button>
 
-            <a className="btn">Sign-In</a>
+            <Link to={"/sign-in"} className="btn">Sign-In</Link>
           </div>
         </div>
       </div>

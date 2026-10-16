@@ -28,17 +28,19 @@ const MiniCart = () => {
           <div className={"flex justify-between"}>
             <div>
               <button
-                className={"btn btn-outline btn-xs me-1 w-7 text-xl"}
+                className="btn btn-outline btn-xs btn-square"
                 onClick={() => dispatch(decrement(item._id))}
               >
-                <LuMinus/>
+                <LuMinus className="w-3.5 h-3.5" />
               </button>
-              <span>{item.quantity}</span>
+
+              <span className="px-2">{item.quantity}</span>
+
               <button
-                className={"btn btn-outline btn-xs ms-1 w-7 text-xl"}
+                className="btn btn-outline btn-xs btn-square"
                 onClick={() => dispatch(increment(item._id))}
               >
-                <LuPlus/>
+                <LuPlus className="w-3.5 h-3.5" />
               </button>
             </div>
             <div>${item.price * item.quantity}</div>

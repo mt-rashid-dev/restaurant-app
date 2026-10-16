@@ -17,10 +17,6 @@ const foodSchema = new Schema({
   discount: {
     type: Number,
     default: 0
-  },
-  stock: {
-    type: Number,
-    required: true
   }
 });
 
