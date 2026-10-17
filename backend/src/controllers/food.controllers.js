@@ -17,7 +17,7 @@ const addFoodItem = async (req, res) => {
       success: true
     });
   } catch (err) {
-    console.log(`Error - adding new food item was unsuccessful: ${err}`);
+    console.log(`Error - adding new food item was not successful: ${err}`);
     res.status(500).json({
       message: "Internal server error",
       success: false
@@ -34,7 +34,7 @@ const getFoodItems = async (req, res) => {
       success: true
     });
   } catch (err) {
-    console.log(`Error - getting food items was unsuccessful: ${err}`);
+    console.log(`Error - getting food items was not successful: ${err}`);
     res.status(500).json({
       message: "Internal server error",
       success: false
