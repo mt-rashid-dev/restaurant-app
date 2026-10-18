@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { LuEye, LuEyeOff, LuLock, LuUser } from "react-icons/lu";
+import { LuEye, LuEyeOff, LuLock } from "react-icons/lu";
+import { HiOutlineMail } from "react-icons/hi";
 
 const SignIn = () => {
   const theme = useSelector(state => state.theme.value);
@@ -40,12 +41,12 @@ const SignIn = () => {
           <label className={"ps-1 text-lg"}>Email</label>
           <div className="relative">
             <div className="absolute flex items-center h-full px-3 z-1">
-              <LuUser className={"size-5"}/>
+              <HiOutlineMail className={"size-5"}/>
             </div>
             <input
               type="text"
               className={theme === "light" ? "border-1 border-black w-full ps-10 py-2 rounded-md" : "border-1 border-light w-full ps-10 py-2 rounded-md"}
-              placeholder="you@example.com"
+              placeholder="name@example.com"
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
@@ -83,10 +84,10 @@ const SignIn = () => {
           type={"submit"}
           className={"btn btn-primary w-full"}
         >
-          Submit
+          Sign-in
         </button>
 
-        <p className={"px-1 py-2"}>Do not have an account? <Link className={"link link-info"}>Sign-up</Link> now.</p>
+        <p className={"px-1 py-2"}>Do not have an account? <Link to={"/sign-up"} className={"link link-info"}>Sign-up</Link> now.</p>
       </form>
     </div>
   );

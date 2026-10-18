@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-import bcrypt from "bcryptjs";
+const bcrypt = require("bcryptjs");
 
 const isProduction = process.env.NODE_ENV === "production"
 
