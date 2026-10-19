@@ -7,6 +7,7 @@ import { setTheme } from "../features/theme/themeSlice.js";
 import MiniCart from "./MiniCart.jsx";
 
 const Header = () => {
+  const user = useSelector(state => state.auth.user);
   const theme = useSelector(state => state.theme.value);
   const length = useSelector(state => state.cart.length);
   const total = useSelector(state => state.cart.total);
@@ -72,7 +73,16 @@ const Header = () => {
               {theme === "light"? <BsMoon/> : <BsSun/>}
             </button>
 
-            <Link to={"/sign-in"} className="btn">Sign-In</Link>
+            {!user && <Link to={"/sign-in"} className="btn">Sign-In</Link>}
+
+            {user && <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button" className="btn m-1">Account</div>
+              <ul tabIndex={-1} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                <li><Link to={"/"}>Profile</Link></li>
+                <li><Link to={"/"}>Orders</Link></li>
+                <li><a>Sign-out</a></li>
+              </ul>
+            </div>}
           </div>
         </div>
       </div>

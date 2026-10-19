@@ -1,0 +1,162 @@
+[
+  {
+    "profilePicture": "",
+    "firstName": "Oliver",
+    "lastName": "Bennett",
+    "email": "oliver.bennett@example.com",
+    "password": 123456,
+    "role": "admin"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Charlotte",
+    "lastName": "Parker",
+    "email": "charlotte.parker@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Ethan",
+    "lastName": "Collins",
+    "email": "ethan.collins@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Emily",
+    "lastName": "Morgan",
+    "email": "emily.morgan@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Lucas",
+    "lastName": "Reed",
+    "email": "lucas.reed@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Grace",
+    "lastName": "Mitchell",
+    "email": "grace.mitchell@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Henry",
+    "lastName": "Foster",
+    "email": "henry.foster@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Lily",
+    "lastName": "Brooks",
+    "email": "lily.brooks@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Jack",
+    "lastName": "Turner",
+    "email": "jack.turner@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Sophie",
+    "lastName": "Hayes",
+    "email": "sophie.hayes@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Ryan",
+    "lastName": "Cooper",
+    "email": "ryan.cooper@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Lucy",
+    "lastName": "Ward",
+    "email": "lucy.ward@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Caleb",
+    "lastName": "Perry",
+    "email": "caleb.perry@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Hannah",
+    "lastName": "Bailey",
+    "email": "hannah.bailey@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Nathan",
+    "lastName": "Coleman",
+    "email": "nathan.coleman@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Chloe",
+    "lastName": "Richardson",
+    "email": "chloe.richardson@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Logan",
+    "lastName": "Murphy",
+    "email": "logan.murphy@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Megan",
+    "lastName": "Russell",
+    "email": "megan.russell@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Connor",
+    "lastName": "Griffin",
+    "email": "connor.griffin@example.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "profilePicture": "",
+    "firstName": "Stella",
+    "lastName": "Jenkins",
+    "email": "stella.jenkins@example.com",
+    "password": 123456,
+    "role": "user"
+  }
+]

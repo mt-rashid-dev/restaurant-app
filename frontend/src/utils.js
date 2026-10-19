@@ -19,3 +19,9 @@ export const toggleTheme = () => {
   localStorage.setItem("dataTheme", dataTheme);
   return dataTheme;
 };
+
+export const sleep = (ms, value) => new Promise((resolve) => {
+  setTimeout(() => {
+    resolve(value);
+  }, ms);
+});

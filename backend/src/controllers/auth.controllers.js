@@ -64,7 +64,7 @@ const signUp = async (req, res) => {
       });
     }
 
-    const hashedPassword = hashPassword(password);
+    const hashedPassword = await hashPassword(password);
 
     const newUser = new User({
       firstName,
@@ -78,13 +78,16 @@ const signUp = async (req, res) => {
     generateToken(newUser._id, res);
 
     res.status(201).send({
-      message: "Sign-up Successful",
+      message: "Sign-up successful",
       success: true,
-      profilePicture: newUser.profilePicture,
-      firstName: newUser.firstName,
-      lastName: newUser.lastName,
-      email: newUser.email,
-      role: newUser.role
+      user: {
+        _id: newUser._id,
+        profilePicture: newUser.profilePicture,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        email: newUser.email,
+        role: newUser.role
+      }
     });
   } catch (error) {
     console.log(`Error - sign-up was not successful: ${error}`);

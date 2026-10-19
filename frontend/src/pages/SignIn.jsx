@@ -32,7 +32,7 @@ const SignIn = () => {
       </div>
 
       {/* Sign-in form - section */}
-      <form className={"max-w-md m-auto mt-10"}>
+      <form className={"max-w-md m-auto mt-10 px-8"}>
         <h1 className={"text-center text-3xl text-primary"}>Welcome Back</h1>
         <p className={"text-center text-base-content/60"}>Sign-in to your account</p>
 

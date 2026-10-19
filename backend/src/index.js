@@ -5,14 +5,14 @@ require("dotenv").config();
 
 const { connectDatabase, checkDatabaseConnection } = require("./config/db.js");
 const foodRoutes = require("./routes/food.routes.js");
-const authRoutes = require("./routes/auth.routes");
+const authRoutes = require("./routes/auth.routes.js");
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
+  origin: process.env.FRONTEND_BASE_URL,
   credentials: true
 }));
 app.use(cookieParser());
