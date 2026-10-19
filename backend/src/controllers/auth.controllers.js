@@ -89,8 +89,8 @@ const signUp = async (req, res) => {
         role: newUser.role
       }
     });
-  } catch (error) {
-    console.log(`Error - sign-up was not successful: ${error}`);
+  } catch (err) {
+    console.log(`Error - sign-up was not successful: ${err}`);
     res.status(500).send({
       message: "Internal server error",
       success: false
@@ -98,4 +98,18 @@ const signUp = async (req, res) => {
   }
 };
 
-module.exports = { signIn, signUp };
+export const signOut = (req, res) => {
+  try {
+    res.cookie("jwt", "", { maxAge: 0 });
+    res.status(200).send({
+      message: "Logged out successfully"
+    });
+  } catch (err) {
+    console.log(`Error - sign-out was not successful: ${err}`);
+    res.status(500).send({
+      message: "Internal server error"
+    });
+  }
+};
+
+module.exports = { signIn, signUp, signOut };
