@@ -1,9 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 import { BsCart4, BsSun, BsMoon, BsXLg } from "react-icons/bs";
+import { LuLogOut } from "react-icons/lu";
+import { IoGiftOutline } from "react-icons/io5";
+import { HiOutlineUserCircle } from "react-icons/hi2";
 
-import { toggleTheme } from "../utils.js";
+import { sleep, toggleTheme } from "../utils.js";
 import { setTheme } from "../features/theme/themeSlice.js";
+import { resetUser } from "../features/auth/authSlice.js";
 import MiniCart from "./MiniCart.jsx";
 
 const Header = () => {
@@ -12,11 +18,25 @@ const Header = () => {
   const length = useSelector(state => state.cart.length);
   const total = useSelector(state => state.cart.total);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const changeTheme = () => {
     const dataTheme = toggleTheme();
     document.documentElement.setAttribute("data-theme", dataTheme);
     dispatch(setTheme(dataTheme));
+  };
+
+  const signOut = () => {
+    axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/sign-out`)
+      .then(async res => {
+        toast.success(res.data.message, { autoClose: 3000, theme: theme });
+        const value = await sleep(3500, "/sign-in");
+        dispatch(resetUser());
+        navigate(value);
+      })
+      .catch(err => {
+        toast.error(err?.response?.data?.message, { autoClose: 3000, theme: theme });
+      });
   };
 
   return (
@@ -78,9 +98,9 @@ const Header = () => {
             {user && <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn m-1">Account</div>
               <ul tabIndex={-1} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                <li><Link to={"/"}>Profile</Link></li>
-                <li><Link to={"/"}>Orders</Link></li>
-                <li><a>Sign-out</a></li>
+                <li><Link to={"/"}><HiOutlineUserCircle className={"inline"}/> Profile</Link></li>
+                <li><Link to={"/"}><IoGiftOutline className={"inline"}/> Orders</Link></li>
+                <li><a onClick={signOut}><LuLogOut className={"inline"}/> Sign-out</a></li>
               </ul>
             </div>}
           </div>

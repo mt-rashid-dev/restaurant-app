@@ -3,6 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 import Layout from "./components/Layout.jsx";
 import Home from "./pages/Home.jsx";
@@ -37,6 +38,8 @@ const App = () => {
           </Layout>}/>
         </Routes>
       </BrowserRouter>
+
+      <ToastContainer/>
     </div>
   );
 };

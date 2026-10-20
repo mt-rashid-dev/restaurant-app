@@ -2,7 +2,8 @@ const express = require("express");
 
 const {
   signIn,
-  signUp
+  signUp,
+  signOut
 } = require("../controllers/auth.controllers.js");
 
 const authRoutes = express.Router();
@@ -12,5 +13,8 @@ authRoutes.post("/sign-in", signIn);
 
 // POST: /api/auth/sign-up
 authRoutes.post("/sign-up", signUp);
+
+// POST: /api/auth/sign-out
+authRoutes.post("/sign-out", signOut);
 
 module.exports = authRoutes;

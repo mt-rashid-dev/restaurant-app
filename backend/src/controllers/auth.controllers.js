@@ -98,16 +98,18 @@ const signUp = async (req, res) => {
   }
 };
 
-export const signOut = (req, res) => {
+const signOut = (req, res) => {
   try {
     res.cookie("jwt", "", { maxAge: 0 });
     res.status(200).send({
-      message: "Logged out successfully"
+      message: "Sign-out successful",
+      success: true
     });
   } catch (err) {
     console.log(`Error - sign-out was not successful: ${err}`);
     res.status(500).send({
-      message: "Internal server error"
+      message: "Internal server error",
+      success: false
     });
   }
 };

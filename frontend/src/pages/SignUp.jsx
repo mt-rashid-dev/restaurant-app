@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { LuEye, LuEyeOff, LuLock, LuUser } from "react-icons/lu";
 import { HiOutlineMail } from "react-icons/hi";
 
@@ -20,11 +20,8 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [createPasswordError, setCreatePasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
-  const [showError, setShowError] = useState(<span>&nbsp;</span>);
   const [isSigningUp, setIsSigningUp] = useState(false);
-
-  const notifySuccess = (message) => toast.success(message, { autoClose: 3000, theme: theme });
-  const notifyError = (message) => toast.error(message, { autoClose: 3000, theme: theme });
+  const navigate = useNavigate();
 
   const togglePassword = () => {
     if (showPassword) {
@@ -56,13 +53,13 @@ const SignUp = () => {
 
     axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/sign-up`, newUser)
       .then(async res => {
-        console.log(res.data);
-        notifySuccess(res.data.message);
+        toast.success(res.data.message, { autoClose: 3000, theme: theme });
         setIsSigningUp(await sleep(3500, false));
         dispatch(setUser(res.data.user));
+        navigate("/");
       })
       .catch(async err => {
-        console.log(err);
+        toast.error(err?.response?.data?.message, { autoClose: 3000, theme: theme });
         setIsSigningUp(await sleep(3500, false));
       });
   };
@@ -70,7 +67,6 @@ const SignUp = () => {
   const resetErrorMessages = () => {
     setCreatePasswordError("");
     setConfirmPasswordError("");
-    setShowError(<span>&nbsp;</span>);
   };
 
   return (
@@ -194,21 +190,17 @@ const SignUp = () => {
           {confirmPasswordError && <p className="pl-1 text-red-400">{confirmPasswordError}</p>}
         </div>
 
-        {/* Show error - section */}
-        <p className={"px-1 my-1 text-red-400"}>{showError}</p>
-
         {/* Submit button - section */}
         <button
           type={"submit"}
-          className={"btn btn-primary w-full"}
+          className={"btn btn-primary w-full mt-8"}
+          disabled={isSigningUp}
         >
           {isSigningUp? <span className="loading loading-spinner loading-sm"></span> : "Sign-up"}
         </button>
 
         <p className={"px-1 py-2"}>Already have an account? <Link to={"/sign-in"} className={"link link-info"}>Sign-in</Link> now.</p>
       </form>
-
-      <ToastContainer />
     </div>
   );
 };
