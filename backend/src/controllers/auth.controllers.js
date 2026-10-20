@@ -30,11 +30,14 @@ const signIn = async (req, res) => {
     res.status(200).send({
       message: "Sign-in successful",
       success: true,
-      profilePicture: user.profilePicture,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      role: user.role
+      user: {
+        _id: user._id,
+        profilePicture: user.profilePicture,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        role: user.role
+      }
     });
   } catch (err) {
     console.log(`Error - sign-in was not successful: ${err}`);
