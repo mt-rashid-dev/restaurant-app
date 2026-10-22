@@ -13,7 +13,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/foods/get-food-items`)
+    axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/foods/get-food-items`, { withCredentials: true })
       .then(res => {
         setFoodItems(res.data.foodItems);
       })

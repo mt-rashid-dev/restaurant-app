@@ -12,6 +12,7 @@ import SignUp from "./pages/SignUp.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import { initTheme } from "./utils.js";
 import { setTheme } from "./features/theme/themeSlice.js";
+import { checkAuth } from "./features/auth/authSlice.js";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const App = () => {
     const dataTheme = initTheme();
     document.documentElement.setAttribute("data-theme", dataTheme);
     dispatch(setTheme(dataTheme));
+    dispatch(checkAuth());
   }, []);
 
   return (

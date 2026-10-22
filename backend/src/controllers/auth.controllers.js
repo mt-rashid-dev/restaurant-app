@@ -40,7 +40,7 @@ const signIn = async (req, res) => {
       }
     });
   } catch (err) {
-    console.log(`Error - sign-in was not successful: ${err}`);
+    console.log(`Error in signIn controller: ${err}`);
     res.status(500).json({
       message: "Internal server error",
       success: false
@@ -93,7 +93,7 @@ const signUp = async (req, res) => {
       }
     });
   } catch (err) {
-    console.log(`Error - sign-up was not successful: ${err}`);
+    console.log(`Error in signUp controller: ${err}`);
     res.status(500).send({
       message: "Internal server error",
       success: false
@@ -109,7 +109,7 @@ const signOut = (req, res) => {
       success: true
     });
   } catch (err) {
-    console.log(`Error - sign-out was not successful: ${err}`);
+    console.log(`Error in signOut controller: ${err}`);
     res.status(500).send({
       message: "Internal server error",
       success: false
@@ -117,4 +117,13 @@ const signOut = (req, res) => {
   }
 };
 
-module.exports = { signIn, signUp, signOut };
+const checkAuth = (req, res) => {
+  try {
+    res.status(200).json(req.user);
+  } catch (err) {
+    console.log(`Error in checkAuth controller: ${err}`);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+module.exports = { signIn, signUp, signOut, checkAuth };

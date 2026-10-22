@@ -51,7 +51,7 @@ const SignUp = () => {
       password: createPassword
     }
 
-    axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/sign-up`, newUser)
+    axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/sign-up`, newUser, { withCredentials: true })
       .then(async res => {
         toast.success(res.data.message, { autoClose: 3000, theme: theme });
         setIsSigningUp(await sleep(3500, false));
