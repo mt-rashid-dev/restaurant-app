@@ -5,10 +5,10 @@ export const checkAuth = createAsyncThunk("auth/checkAuth", async () => {
   const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/auth/check`, { withCredentials: true });
   return {
     _id: res.data._id,
-    firstName: res.data.fullName,
-    lastName: res.data.fullName,
+    profilePicture: res.data.profilePicture,
+    firstName: res.data.firstName,
+    lastName: res.data.lastName,
     email: res.data.email,
-    profilePic: res.data.profilePic,
     role: res.data.role
   };
 });

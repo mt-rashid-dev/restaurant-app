@@ -98,7 +98,7 @@ const Header = () => {
             {user && <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn m-1">Account</div>
               <ul tabIndex={-1} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                <li><Link to={"/"}><HiOutlineUserCircle className={"inline"}/> Profile</Link></li>
+                <li><Link to={"/profile"}><HiOutlineUserCircle className={"inline"}/> Profile</Link></li>
                 <li><Link to={"/"}><IoGiftOutline className={"inline"}/> Orders</Link></li>
                 <li><a onClick={signOut}><LuLogOut className={"inline"}/> Sign-out</a></li>
               </ul>

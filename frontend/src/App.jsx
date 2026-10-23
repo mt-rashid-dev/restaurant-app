@@ -9,6 +9,7 @@ import Layout from "./components/Layout.jsx";
 import Home from "./pages/Home.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import SignUp from "./pages/SignUp.jsx";
+import Profile from "./pages/Profile.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import { initTheme } from "./utils.js";
 import { setTheme } from "./features/theme/themeSlice.js";
@@ -37,6 +38,9 @@ const App = () => {
           </Layout>}/>
           <Route path={"/sign-up"} element={<Layout>
             <SignUp/>
+          </Layout>}/>
+          <Route path={"/profile"} element={<Layout>
+            <Profile/>
           </Layout>}/>
         </Routes>
       </BrowserRouter>
