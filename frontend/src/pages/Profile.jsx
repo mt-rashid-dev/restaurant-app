@@ -1,11 +1,20 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { CiUser } from "react-icons/ci";
 import { LuKeyRound, LuMail, LuUser } from "react-icons/lu";
 import { BiEdit } from "react-icons/bi";
+import { RiCloseLine } from "react-icons/ri";
+import { FaRegFileImage } from "react-icons/fa";
 
 const Profile = () => {
   const user = useSelector(state => state.auth.user);
+  const theme = useSelector(state => state.theme.value);
+  const [showEditProfile, setShowEditProfile] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [showProfileError, setProfileError] = useState("");
 
   return (
     <div>
@@ -58,9 +67,108 @@ const Profile = () => {
           </div>
         </div>
 
-        <button className={"btn btn-info mt-8 w-full"}><BiEdit className={"size-5"}/>Edit Profile</button>
+        <button
+          className={"btn btn-info mt-8 w-full"}
+          onClick={() => setShowEditProfile(true)}
+        >
+          <BiEdit className={"size-5"}/>Edit Profile
+        </button>
         <button className={"btn btn-secondary mt-4 w-full"}><LuKeyRound/> Change Password</button>
       </div>
+
+      {/* Edit profile modal - section */}
+      {showEditProfile && <div
+        className={"fixed w-[100vw] h-[100vh] bg-gray-950/50 z-100 top-0 left-0"}
+      >
+        <div className={"flex justify-center items-center w-full h-full"}>
+          <div className={"bg-base-100 sm:w-[300px] md:w-[500px] p-8 rounded-md"}>
+            {/* Modal header - section */}
+            <div className={"flex justify-between items-center"}>
+              <h3 className={"font-bold text-xl flex items-center"}><BiEdit className={"size-5 inline-block"}/>&nbsp;Edit Profile</h3>
+              <button
+                className={"btn btn-sm btn-square"}
+                onClick={() => setShowEditProfile(false)}
+              >
+                <RiCloseLine className={"size-6"}/>
+              </button>
+            </div>
+
+            {/* Edit profile form - section */}
+            <form>
+              <div className={"bg-base-200 w-fit m-auto rounded-full p-4"}>
+                {!user?.profilePicture && <CiUser className={"size-30"}/>}
+              </div>
+
+              <div className={"mt-3"}>
+                <div className="relative">
+                  <div className="absolute flex items-center h-full px-3 z-1">
+                    <FaRegFileImage className={"size-5"}/>
+                  </div>
+                  <input
+                    type="file"
+                    className={theme === "light" ? "border-1 border-black w-full ps-10 py-2 rounded-md" : "border-1 border-light w-full ps-10 py-2 rounded-md"}
+                  />
+                </div>
+              </div>
+
+              {/* Edit first name - section */}
+              <div className={"mt-3"}>
+                <label className={"ps-1 text-lg"}>First Name</label>
+                <div className="relative">
+                  <div className="absolute flex items-center h-full px-3 z-1">
+                    <LuUser className={"size-5"}/>
+                  </div>
+                  <input
+                    type="text"
+                    className={theme === "light" ? "border-1 border-black w-full ps-10 py-2 rounded-md" : "border-1 border-light w-full ps-10 py-2 rounded-md"}
+                    placeholder={user?.firstName}
+                    value={firstName}
+                    onChange={e => setFirstName(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              {/* Edit last name - section */}
+              <div className={"mt-3"}>
+                <label className={"ps-1 text-lg"}>Last Name</label>
+                <div className="relative">
+                  <div className="absolute flex items-center h-full px-3 z-1">
+                    <LuUser className={"size-5"}/>
+                  </div>
+                  <input
+                    type="text"
+                    className={theme === "light" ? "border-1 border-black w-full ps-10 py-2 rounded-md" : "border-1 border-light w-full ps-10 py-2 rounded-md"}
+                    placeholder={user?.lastName}
+                    value={lastName}
+                    onChange={e => setLastName(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              {/* Edit email - section */}
+              <div className={"mt-3"}>
+                <label className={"ps-1 text-lg"}>Email</label>
+                <div className="relative">
+                  <div className="absolute flex items-center h-full px-3 z-1">
+                    <LuMail className={"size-5"}/>
+                  </div>
+                  <input
+                    type="text"
+                    className={theme === "light" ? "border-1 border-black w-full ps-10 py-2 rounded-md" : "border-1 border-light w-full ps-10 py-2 rounded-md"}
+                    placeholder={user?.email}
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              {showProfileError && <p className={"text-red-500 mt-6"}>{showProfileError}</p>}
+
+              <button className={"btn btn-info mt-6 w-full"}>Save Changes</button>
+            </form>
+          </div>
+        </div>
+      </div>}
     </div>
   );
 };
