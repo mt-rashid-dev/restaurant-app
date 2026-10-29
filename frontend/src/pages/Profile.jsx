@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 import { CiUser } from "react-icons/ci";
 import { LuKeyRound, LuMail, LuUser } from "react-icons/lu";
 import { BiEdit } from "react-icons/bi";
 import { RiCloseLine } from "react-icons/ri";
 import { FaRegFileImage } from "react-icons/fa";
+
+import { setUser } from "../features/auth/authSlice.js";
 
 const Profile = () => {
   const user = useSelector(state => state.auth.user);
@@ -14,7 +18,42 @@ const Profile = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [showProfileError, setProfileError] = useState("");
+  const [editError, setEditError] = useState(<span>&nbsp;</span>);
+  const [selectedPicture, setSelectedPicture] = useState(null);
+  const [picturePreview, setPicturePreview] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+  const dispatch = useDispatch();
+
+  const changePicture = (e) => {
+    if (e.target.files.length > 0) {
+      setSelectedPicture(e.target.files[0]);
+      setPicturePreview(URL.createObjectURL(e.target.files[0]));
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsEditing(true);
+    setEditError(<span>&nbsp;</span>);
+    const formData = new FormData();
+
+    formData.append("selectedPicture", selectedPicture);
+    formData.append("firstName", firstName || user?.firstName);
+    formData.append("lastName", lastName || user?.lastName);
+    formData.append("email", email || user?.email);
+
+    axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/user/edit-profile`, formData, { withCredentials: true })
+      .then(res => {
+        dispatch(setUser(res.data.user));
+        setIsEditing(false);
+        setShowEditProfile(false);
+        toast.success(res.data.message, { autoClose: 3000, theme: theme })
+      })
+      .catch(err => {
+        setIsEditing(false);
+        setEditError(err);
+      });
+  }
 
   return (
     <div>
@@ -32,6 +71,7 @@ const Profile = () => {
       <div className={"max-w-md m-auto p-8 mt-10 bg-base-200 rounded-md"}>
         <div className={"bg-base-100 w-fit m-auto rounded-full p-4"}>
           {!user?.profilePicture && <CiUser className={"size-30"}/>}
+          {user?.profilePicture && <img src={import.meta.env.VITE_API_BASE_URL+"/"+user.profilePicture} alt={user?.firstName+" "+user?.lastName} className={"size-30"}/>}
         </div>
 
         {/* First name - section */}
@@ -94,9 +134,11 @@ const Profile = () => {
             </div>
 
             {/* Edit profile form - section */}
-            <form>
+            <form encType={"multipart/form-data"} onSubmit={handleSubmit}>
               <div className={"bg-base-200 w-fit m-auto rounded-full p-4"}>
-                {!user?.profilePicture && <CiUser className={"size-30"}/>}
+                {(!picturePreview && !user.profilePicture) && <CiUser className={"size-30"}/>}
+                {(!picturePreview && user?.profilePicture) && <img src={import.meta.env.VITE_API_BASE_URL+"/"+user?.profilePicture} alt="" className={"size-30"}/>}
+                {picturePreview && <img src={picturePreview} alt="" className={"size-30"}/>}
               </div>
 
               <div className={"mt-3"}>
@@ -107,6 +149,8 @@ const Profile = () => {
                   <input
                     type="file"
                     className={theme === "light" ? "border-1 border-black w-full ps-10 py-2 rounded-md" : "border-1 border-light w-full ps-10 py-2 rounded-md"}
+                    accept="image/*"
+                    onChange={changePicture}
                   />
                 </div>
               </div>
@@ -162,9 +206,14 @@ const Profile = () => {
                 </div>
               </div>
 
-              {showProfileError && <p className={"text-red-500 mt-6"}>{showProfileError}</p>}
+              {editError && <p className={"text-red-500 my-2"}>{editError}</p>}
 
-              <button className={"btn btn-info mt-6 w-full"}>Save Changes</button>
+              <button
+                className={"btn btn-info w-full"}
+                disabled={isEditing}
+              >
+                {isEditing? <span className="loading loading-spinner loading-sm"></span> : "Save Changes"}
+              </button>
             </form>
           </div>
         </div>
