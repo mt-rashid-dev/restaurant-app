@@ -27,7 +27,7 @@ const Header = () => {
   };
 
   const signOut = () => {
-    axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/sign-out`, { withCredentials: true })
+    axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/sign-out`, {}, { withCredentials: true })
       .then(async res => {
         toast.success(res.data.message, { autoClose: 3000, theme: theme });
         const value = await sleep(3500, "/sign-in");
