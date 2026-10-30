@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { LuEye, LuEyeOff, LuLock, LuUser } from "react-icons/lu";
@@ -11,6 +11,7 @@ import { setUser } from "../features/auth/authSlice.js";
 
 const SignUp = () => {
   const theme = useSelector(state => state.theme.value);
+  const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -68,6 +69,10 @@ const SignUp = () => {
     setCreatePasswordError("");
     setConfirmPasswordError("");
   };
+
+  if (user) {
+    return <Navigate to={"/"}/>;
+  }
 
   return (
     <div className={"min-h-[calc(100vh-200px)]"}>

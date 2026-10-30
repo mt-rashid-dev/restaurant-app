@@ -1,7 +1,7 @@
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
@@ -16,6 +16,7 @@ import { setTheme } from "./features/theme/themeSlice.js";
 import { checkAuth } from "./features/auth/authSlice.js";
 
 const App = () => {
+  const isCheckingAuth = useSelector(state => state.auth.isCheckingAuth);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,6 +25,14 @@ const App = () => {
     dispatch(setTheme(dataTheme));
     dispatch(checkAuth());
   }, []);
+
+  if (isCheckingAuth) {
+    return (
+      <div className={"flex w-screen h-screen items-center justify-center"}>
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
+  }
 
   return (
     <div className={"App"}>
