@@ -130,13 +130,13 @@ const Profile = () => {
         </div>
 
         <button
-          className={"btn btn-info mt-8 w-full"}
+          className={"btn btn-primary mt-8 w-full"}
           onClick={() => setShowEditProfile(true)}
         >
           <BiEdit className={"size-5"}/>Edit Profile
         </button>
         <button
-          className={"btn btn-secondary mt-4 w-full"}
+          className={"btn btn-outline btn-primary hover:bg-base-200 hover:border-primary/70 hover:text-primary/70 hover:shadow-none mt-4 w-full"}
           onClick={() => setChangePassword(true)}
         >
           <LuKeyRound/> Change Password
@@ -236,7 +236,7 @@ const Profile = () => {
               {editError && <p className={"text-red-500 my-2"}>{editError}</p>}
 
               <button
-                className={"btn btn-info w-full"}
+                className={"btn btn-primary w-full"}
                 disabled={isEditing}
               >
                 {isEditing? <span className="loading loading-spinner loading-sm"></span> : "Save Changes"}
@@ -340,7 +340,7 @@ const Profile = () => {
               {changeError && <p className={"text-red-500 my-2"}>{changeError}</p>}
 
               <button
-                className={"btn btn-secondary w-full"}
+                className={"btn btn-outline btn-primary hover:bg-base-100 hover:border-primary/70 hover:text-primary/70 hover:shadow-none mt-4 w-full"}
                 disabled={isEditing}
               >
                 {isEditing? <span className="loading loading-spinner loading-sm"></span> : "Save Changes"}

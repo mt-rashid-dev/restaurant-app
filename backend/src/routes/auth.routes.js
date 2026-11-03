@@ -4,7 +4,8 @@ const {
   signIn,
   signUp,
   signOut,
-  checkAuth
+  checkAuth,
+  changePassword
 } = require("../controllers/auth.controllers.js");
 const { protectRoute } = require("../middleware/auth.middleware.js");
 
@@ -21,5 +22,8 @@ authRoutes.post("/sign-out", signOut);
 
 // GET: /api/auth/check
 authRoutes.get("/check", protectRoute, checkAuth);
+
+// PUT: /api/auth/change-password
+authRoutes.put("/change-password", protectRoute, changePassword);
 
 module.exports = authRoutes;

@@ -122,8 +122,56 @@ const checkAuth = (req, res) => {
     res.status(200).json(req.user);
   } catch (err) {
     console.log(`Error in checkAuth controller: ${err}`);
-    res.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({
+      message: "Internal Server Error",
+      success: false
+    });
   }
 };
 
-module.exports = { signIn, signUp, signOut, checkAuth };
+const changePassword = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const currentPassword = req.body.currentPassword;
+    const newPassword = req.body.newPassword;
+    let result = null;
+
+    const user = await User.findOne({ _id: userId }, { password: 1 });
+    console.log(user);
+
+    const isPasswordCorrect = await verifyPassword(currentPassword, user.password);
+
+    if (isPasswordCorrect) {
+      const hashedPassword = await hashPassword(newPassword);
+      result = await User.updateOne({ _id: userId }, { $set: {
+        password: hashedPassword
+      } });
+    }
+
+    if (result.modifiedCount > 0) {
+      return res.status(200).json({
+        message: "Password changed successfully",
+        success: true
+      });
+    }
+
+    res.status(400).json({
+      message: "Password changed successfully",
+      success: true
+    });
+  } catch (err) {
+    console.log(`Error in changePassword controller: ${err}`);
+    res.status(500).json({
+      message: "Internal Server Error",
+      success: false
+    });
+  }
+};
+
+module.exports = {
+  signIn,
+  signUp,
+  signOut,
+  checkAuth,
+  changePassword
+};
