@@ -53,7 +53,8 @@ const Profile = () => {
         dispatch(setUser(res.data.user));
         setIsEditing(false);
         setShowEditProfile(false);
-        toast.success(res.data.message, { autoClose: 3000, theme: theme })
+        toast.success(res.data.message, { autoClose: 3000, theme: theme });
+        resetForms();
       })
       .catch(err => {
         setIsEditing(false);
@@ -71,7 +72,46 @@ const Profile = () => {
 
   const handleChange = (e) => {
     e.preventDefault();
+    setChangeError(<span>&nbsp;</span>);
+
+    if (currentPassword < 6) {
+      setChangeError("Password must be at least 6 characters.");
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setChangeError("Passwords do not match");
+      return;
+    }
+
+    const data = {
+      currentPassword,
+      newPassword
+    };
+
+    axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/auth/change-password`, data, { withCredentials: true })
+      .then(res => {
+        setChangePassword(false);
+        toast.success(res.data.message, { autoClose: 3000, theme: theme });
+        resetForms();
+      })
+      .catch(err => {
+        if (err?.response?.data?.type === "update-unsuccessful") {
+          setChangeError(err?.response?.data?.message);
+        } else {
+          setChangeError("Something went wrong. Please try again.");
+        }
+      });
   };
+
+  const resetForms = () => {
+    setSelectedPicture(null);
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setCurrentPassword("");
+    setNewPassword("");
+    setConfirmPassword("");
+  }
 
   if (!user) {
     return <Navigate to={"/"}/>;
@@ -154,7 +194,10 @@ const Profile = () => {
               <h3 className={"font-bold text-xl flex items-center"}><BiEdit className={"size-5 inline-block"}/>&nbsp;Edit Profile</h3>
               <button
                 className={"btn btn-sm btn-square"}
-                onClick={() => setShowEditProfile(false)}
+                onClick={() => {
+                  setShowEditProfile(false);
+                  resetForms();
+                }}
               >
                 <RiCloseLine className={"size-6"}/>
               </button>
@@ -257,7 +300,10 @@ const Profile = () => {
               <h3 className={"font-bold text-xl flex items-center"}><LuKeyRound className={"size-5 inline-block"}/>&nbsp;Change Password</h3>
               <button
                 className={"btn btn-sm btn-square"}
-                onClick={() => setChangePassword(false)}
+                onClick={() => {
+                  setChangePassword(false);
+                  resetForms();
+                }}
               >
                 <RiCloseLine className={"size-6"}/>
               </button>

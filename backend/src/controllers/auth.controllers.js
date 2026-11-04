@@ -18,7 +18,7 @@ const signIn = async (req, res) => {
     const isPasswordCorrect = await verifyPassword(password, user.password);
 
     if (!isPasswordCorrect) {
-      return res.status(400).send({
+      return res.status(401).send({
         message: "Invalid email or password",
         type: "invalid-credentials",
         success: false
@@ -137,7 +137,6 @@ const changePassword = async (req, res) => {
     let result = null;
 
     const user = await User.findOne({ _id: userId }, { password: 1 });
-    console.log(user);
 
     const isPasswordCorrect = await verifyPassword(currentPassword, user.password);
 
@@ -146,6 +145,12 @@ const changePassword = async (req, res) => {
       result = await User.updateOne({ _id: userId }, { $set: {
         password: hashedPassword
       } });
+    } else {
+      return res.status(401).json({
+        message: "Current password is incorrect. Please try again.",
+        type: "update-unsuccessful",
+        success: false
+      });
     }
 
     if (result.modifiedCount > 0) {
@@ -156,8 +161,9 @@ const changePassword = async (req, res) => {
     }
 
     res.status(400).json({
-      message: "Password changed successfully",
-      success: true
+      message: "Password was not changed. Please try again.",
+      type: "update-unsuccessful",
+      success: false
     });
   } catch (err) {
     console.log(`Error in changePassword controller: ${err}`);
