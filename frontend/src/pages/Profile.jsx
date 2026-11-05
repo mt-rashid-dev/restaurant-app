@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { CiUser } from "react-icons/ci";
@@ -9,7 +9,7 @@ import { BiEdit } from "react-icons/bi";
 import { RiCloseLine } from "react-icons/ri";
 import { FaRegFileImage } from "react-icons/fa";
 
-import { setUser } from "../features/auth/authSlice.js";
+import { setUser, resetUser } from "../features/auth/authSlice.js";
 
 const Profile = () => {
   const user = useSelector(state => state.auth.user);
@@ -57,8 +57,13 @@ const Profile = () => {
         resetForms();
       })
       .catch(err => {
+        if (err?.response?.data?.type === "auth-error") {
+          toast.error("Session expired. Please sign-in.", { autoClose: 3000, theme: theme });
+          dispatch(resetUser());
+        } else {
+          setEditError("Something went wrong. Please try again");
+        }
         setIsEditing(false);
-        setEditError(err);
       });
   };
 
@@ -97,6 +102,9 @@ const Profile = () => {
       .catch(err => {
         if (err?.response?.data?.type === "update-unsuccessful") {
           setChangeError(err?.response?.data?.message);
+        } else if (err?.response?.data?.type === "auth-error") {
+          toast.error("Session expired. Please sign-in.", { autoClose: 3000, theme: theme });
+          dispatch(resetUser());
         } else {
           setChangeError("Something went wrong. Please try again.");
         }
@@ -114,7 +122,7 @@ const Profile = () => {
   }
 
   if (!user) {
-    return <Navigate to={"/"}/>;
+    return <Navigate to={"/sign-in"}/>;
   }
 
   return (
