@@ -1,5 +1,6 @@
 import burger from "../assets/burger.png";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { IoGiftOutline } from "react-icons/io5";
 import { RiTruckLine } from "react-icons/ri";
@@ -11,15 +12,17 @@ import FoodItemCard from "../components/FoodItemCard.jsx";
 const Home = () => {
   const [foodItems, setFoodItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/foods/get-food-items`, { withCredentials: true })
+    axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/foods/get-food-items?page=1&limit=12`, { withCredentials: true })
       .then(res => {
         setFoodItems(res.data.foodItems);
       })
       .catch(err => {
-        console.log(error);
-      });
+        console.log(err);
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   return (
@@ -40,7 +43,7 @@ const Home = () => {
               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
               quasi. In deleniti eaque aut repudiandae et a id nisi.
             </p>
-            <button className="btn btn-primary me-2">Order Now</button>
+            <button className="btn btn-primary me-2" onClick={() => navigate("/order-now")}>Order Now</button>
             <button className={"btn btn-secondary"}>Book Table</button>
           </div>
         </div>
@@ -85,9 +88,13 @@ const Home = () => {
       {/* Explore our menu - section */}
       <h2 className={"text-4xl text-center text-primary mt-10 mb-1"}>Explore Our Menu</h2>
       <p className={"text-center"}>Delicious dishes crafted with fresh ingredients</p>
-      <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 mt-6"}>
+      {(isLoading && foodItems.length === 0) && <div className={"flex justify-center mt-8"}>
+        <span className="loading loading-spinner loading-xl text-primary"></span>
+      </div>}
+      {(!isLoading && foodItems.length > 0) && <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 mt-6"}>
         {foodItems.map(item => <FoodItemCard key={item._id} item={item}/>)}
-      </div>
+      </div>}
+      {(!isLoading && foodItems.length === 0) && <p className={"text-center font-bold mt-8 text-gray-500 text-xl"}>No food items found.</p>}
     </div>
   );
 };

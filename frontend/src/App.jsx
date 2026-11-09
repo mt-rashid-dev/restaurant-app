@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 
 import Layout from "./components/Layout.jsx";
 import Home from "./pages/Home.jsx";
+import OrderNow from "./pages/OrderNow.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import Profile from "./pages/Profile.jsx";
@@ -41,6 +42,9 @@ const App = () => {
         <Routes>
           <Route path={"/"} element={<Layout>
             <Home/>
+          </Layout>}/>
+          <Route path={"/order-now"} element={<Layout>
+            <OrderNow/>
           </Layout>}/>
           <Route path={"/sign-in"} element={<Layout>
             <SignIn/>

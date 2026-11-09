@@ -27,10 +27,16 @@ const addFoodItem = async (req, res) => {
 
 const getFoodItems = async (req, res) => {
   try {
-    const foodItems = await Food.find().limit(12);
+    const page = req.query.page;
+    const limit = req.query.limit;
+
+    const foodItems = await Food.find().skip((page - 1) * limit).limit(limit);
+    let count = await Food.find().countDocuments();
+    if (count === 0) count = limit;
 
     res.status(200).send({
       foodItems,
+      totalPages: Math.ceil(count / limit),
       success: true
     });
   } catch (err) {
