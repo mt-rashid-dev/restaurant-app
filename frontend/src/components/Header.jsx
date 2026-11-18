@@ -57,7 +57,7 @@ const Header = () => {
               <ul tabIndex={-1} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                 <li><Link to={"/"}>Home</Link></li>
                 <li><Link to={"/order-now"}>Order Now</Link></li>
-                <li><Link to={"/"}>Book Table</Link></li>
+                <li><Link to={"/book-table"}>Book Table</Link></li>
                 <li>
                   <button
                     className="btn btn-soft btn-primary btn-sm sm:hidden mx-2 text-lg"
@@ -75,7 +75,7 @@ const Header = () => {
             <ul className="menu menu-horizontal px-1">
               <li><Link to={"/"}>Home</Link></li>
               <li><Link to={"/order-now"}>Order Now</Link></li>
-              <li><Link to={"/"}>Book Table</Link></li>
+              <li><Link to={"/book-table"}>Book Table</Link></li>
             </ul>
           </div>
 
